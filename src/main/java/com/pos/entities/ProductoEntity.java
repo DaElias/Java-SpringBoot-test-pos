@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "productos")
 @Data @Builder
 @AllArgsConstructor @NoArgsConstructor 
-
 public class ProductoEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +27,8 @@ public class ProductoEntity {
 	private double precio;
 	private float impuesto;
 	
-	@ManyToOne(fetch = FetchType.LAZY) 	// Trae solo el identificador del objeto
-	//@ManyToOne(fetch = FetchType.EAGER) //Trae el objeto unidad de medida
+//	@ManyToOne(fetch = FetchType.LAZY) 	
+	@ManyToOne(fetch = FetchType.EAGER) 
 	@JoinColumn(name = "id_unidad_medida")
 	private UnidadMedidasEntity unidadMedida;
 	

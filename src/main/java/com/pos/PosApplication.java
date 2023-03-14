@@ -33,14 +33,14 @@ public class PosApplication implements CommandLineRunner {
 	}
 
 	private void initDb() { 
-		var unidad = UnidadMedidasEntity.builder().id(1L).descripcion("Metro").build();
-		var categoria = CategoriaEntity.builder().id(1L).descripcion("Categoria 1").build();
-		var producto = ProductoEntity.builder().id(1L).categoria(categoria).unidadMedida(unidad)
-				.descripcion("Arroz").precio(1200).impuesto(19f).build();
-		
-		
-		this.categoriaRepository.save(categoria);
-		this.unidadMedidaRepository.save(unidad);
-		this.productRepository.save(producto);
+//		var unidad = UnidadMedidasEntity.builder().id(1L).descripcion("Metro").build();
+//		var categoria = CategoriaEntity.builder().id(1L).descripcion("Categoria 1").build();
+//		var producto = ProductoEntity.builder().id(1L).nombre("ARROZ").categoria(categoria).unidadMedida(unidad)
+//				.descripcion("Arroz").precio(1200).impuesto(19f).build();
+//		
+//		
+//		this.categoriaRepository.save(categoria);
+//		this.unidadMedidaRepository.save(unidad);
+//		this.productRepository.save(producto);
 	}
 }
