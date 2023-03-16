@@ -2,6 +2,7 @@ package com.pos.dal;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -56,4 +57,13 @@ public class UnidadMedidaDal {
 		return unidadMedidaRepository.findAll(PageRequest.of(page, size)).getContent();
 	}
 
+	
+	public UnidadMedidasEntity findById(Long id) throws ExecutionException {
+		var data = unidadMedidaRepository.findById(id);
+		if(data.isEmpty()) {
+			 throw new Error("not found UnidadMedida");
+		}
+		return data.get();
+	}
+	
 }

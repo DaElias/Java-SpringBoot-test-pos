@@ -1,6 +1,7 @@
 package com.pos.bl;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -49,6 +50,11 @@ public class UnidadMedidaBl {
 			return false;
 		}
 
+	}
+	
+	public UnidadMedidaDto findById(Long id) throws ExecutionException {
+		UnidadMedidasEntity element = this.unidadMedidaDal.findById(id);
+		return mapper.map(element,UnidadMedidaDto.class);
 	}
 
 }
