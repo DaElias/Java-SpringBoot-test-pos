@@ -3,9 +3,11 @@ package com.pos;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
+import org.hibernate.internal.build.AllowSysOut;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.PageRequest;
 
 import com.pos.entities.CategoriaEntity;
 import com.pos.entities.ProductoEntity;
@@ -27,13 +29,22 @@ class DataBaseTest {
 	private IProductoRepository productoRepo;
 
 	@Test
+	void initialTest() {
+		var consulta = unidadRepo.findAll(PageRequest.of(1, 2));
+		System.out.println("TEST #1");
+		consulta.stream().forEach( U -> System.out.println(U));
+//		whenFindCategoria_thenResultListCategoria();
+		
+	}
+	
+	
 	void whenFindCategoria_thenResultListCategoria() {
 		categoriaRepo.save(CategoriaEntity.builder().descripcion("ARROZ").build());
 		List<CategoriaEntity> consultaBase = categoriaRepo.findAll();
 		print(consultaBase.toString());
 	}
 
-	@Test
+	
 	void whenFindUnidadMedida_thenResultListUNidadMedida() {
 		unidadRepo.save(UnidadMedidasEntity.builder().descripcion("Litros").build());
 		List<UnidadMedidasEntity> consultaBase = unidadRepo.findAll();
@@ -41,7 +52,7 @@ class DataBaseTest {
 //		Assertions.assertThat(consultaBase.size()).isEqualTo(1);
 	}
 
-	@Test
+	
 	void whenFindProducto_thenResultListProducto() {
 		var unidad = UnidadMedidasEntity.builder().descripcion("Años Luz").build();
 		var categoria = CategoriaEntity.builder().descripcion("Via Lactea").build();
@@ -60,7 +71,7 @@ class DataBaseTest {
 		System.out.println("\n" + texto + "\n");
 	}
 
-	@Test
+	
 	void deleteAllData() {
 		productoRepo.delete(ProductoEntity.builder().id(1L).build());
 		categoriaRepo.delete(CategoriaEntity.builder().id(1L).build());
@@ -70,5 +81,7 @@ class DataBaseTest {
 		Assertions.assertThat(consultaBase.size()).isEqualTo(0);
 		print("delete" + consultaBase.toString());
 	}
+	
+
 
 }
