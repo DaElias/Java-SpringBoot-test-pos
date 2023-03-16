@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -23,5 +24,11 @@ public class UnidadMedidaController {
 	public ResponseEntity<List<UnidadMedidaDto>> findAll() {
 //		return new ResponseEntity<List<UnidadMedidaDto>>(unidadMeididaBl.findAll(), HttpStatus.OK);
 		return ResponseEntity.ok(unidadMeididaBl.findAll());
+	}
+	
+	
+	@GetMapping("/pages")
+	public ResponseEntity<List<UnidadMedidaDto>> findAllPage(@RequestParam int page,@RequestParam int size ) {
+		return ResponseEntity.ok(unidadMeididaBl.findAllPages(page, size));
 	}
 }
