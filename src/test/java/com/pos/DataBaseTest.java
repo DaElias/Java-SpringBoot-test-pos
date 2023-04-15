@@ -34,7 +34,6 @@ class DataBaseTest {
 		System.out.println("TEST #1");
 		consulta.stream().forEach( U -> System.out.println(U));
 //		whenFindCategoria_thenResultListCategoria();
-		
 	}
 	
 	
@@ -61,9 +60,7 @@ class DataBaseTest {
 		unidadRepo.save(unidad);
 		categoriaRepo.save(categoria);
 		productoRepo.save(producto);
-
 		List<ProductoEntity> consultaBase = productoRepo.findAll();
-
 		print("whenFindProducto_thenResultListProducto\n" + consultaBase.toString());
 	}
 
@@ -76,7 +73,6 @@ class DataBaseTest {
 		productoRepo.delete(ProductoEntity.builder().id(1L).build());
 		categoriaRepo.delete(CategoriaEntity.builder().id(1L).build());
 		unidadRepo.delete(UnidadMedidasEntity.builder().id(1L).build());
-
 		List<ProductoEntity> consultaBase = productoRepo.findAll();
 		Assertions.assertThat(consultaBase.size()).isEqualTo(0);
 		print("delete" + consultaBase.toString());

@@ -28,7 +28,7 @@ public class PosApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-//		initDb();
+		initDb();
 		System.out.println("FIN RUNNER");
 	}
 
